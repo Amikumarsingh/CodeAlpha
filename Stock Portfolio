@@ -1,1 +1,39 @@
+class portfolio:
+  def __init__(self):
+    self.portfolio = {}
 
+  def add_stock(self.symbol,shares):
+    symbol = symbol.upper()
+    self.portfolio[symbol] = self.portfolio.get(symbol,0) + shares
+
+  def remove_stock(self,symbol):
+    symbol = symbol.upper()
+    if symbol in self.portfolio:
+      del self.portfoliuo[symbol]
+    else:
+      print(f"{symbol} not found in the portfolio!")
+
+  def get_stock_price(sef,symbol):
+    simulated_prices = {
+      "AAPL": 150.25,
+      "GOOGL": 2500.50,
+      "MSFT": 300.75,
+      "AMZN": 3500.20,
+      "FB": 350.80,
+      "JPM": 150.50,
+      "WMT": 250.90,
+      "BAC": 150.75,
+      "JNJ": 150.25,
+      "V": 250.50,
+      "PG": 150.25,
+    }
+
+    return simulated_prices.get(symbol.upper(),None)
+
+  def display_portfolio(self):
+    print("\nCurrent Portfolio:")
+    for symbol. shares in self.portfolio.items():
+      stock_price = self.get_stock_price(symbol)
+      if stock_price:
+        total_value = stock_price + shares
+        print(f"{sy}")
