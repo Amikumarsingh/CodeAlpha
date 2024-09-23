@@ -1,39 +1,70 @@
-class portfolio:
+class Portfolio:
   def __init__(self):
-    self.portfolio = {}
+      self.portfolio = {}
 
-  def add_stock(self.symbol,shares):
-    symbol = symbol.upper()
-    self.portfolio[symbol] = self.portfolio.get(symbol,0) + shares
+  def add_stock(self, symbol, shares):
+      symbol = symbol.upper()
+      self.portfolio[symbol] = self.portfolio.get(symbol, 0) + shares
 
-  def remove_stock(self,symbol):
-    symbol = symbol.upper()
-    if symbol in self.portfolio:
-      del self.portfoliuo[symbol]
-    else:
-      print(f"{symbol} not found in the portfolio!")
+  def remove_stock(self, symbol):
+      symbol = symbol.upper()
+      if symbol in self.portfolio:
+          del self.portfolio[symbol]  
+      else:
+          print(f"{symbol} not found in the portfolio!")
 
-  def get_stock_price(sef,symbol):
-    simulated_prices = {
-      "AAPL": 150.25,
-      "GOOGL": 2500.50,
-      "MSFT": 300.75,
-      "AMZN": 3500.20,
-      "FB": 350.80,
-      "JPM": 150.50,
-      "WMT": 250.90,
-      "BAC": 150.75,
-      "JNJ": 150.25,
-      "V": 250.50,
-      "PG": 150.25,
-    }
+  def get_stock_price(self, symbol):  
+      simulated_prices = {
+          "AAPL": 150.25,
+          "GOOGL": 2500.50,
+          "MSFT": 300.75,
+          "AMZN": 3500.20,
+          "FB": 350.80,
+          "JPM": 150.50,
+          "WMT": 250.90,
+          "BAC": 150.75,
+          "JNJ": 150.25,
+          "V": 250.50,
+          "PG": 150.25,
+      }
 
-    return simulated_prices.get(symbol.upper(),None)
+      return simulated_prices.get(symbol.upper(), None)
 
   def display_portfolio(self):
-    print("\nCurrent Portfolio:")
-    for symbol. shares in self.portfolio.items():
-      stock_price = self.get_stock_price(symbol)
-      if stock_price:
-        total_value = stock_price + shares
-        print(f"{sy}")
+      print("\nCurrent Portfolio:")
+      for symbol, shares in self.portfolio.items(): 
+          stock_price = self.get_stock_price(symbol)
+          if stock_price:
+              total_value = stock_price * shares  
+              print(f"{symbol}: {shares} shares, Total Value: ${total_value:.2f}")
+          else:
+              print(f"{symbol}: {shares} shares (Price unavailable)")
+      print("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _")
+
+if __name__ == "__main__":  # Fixed = to ==
+  tracker = Portfolio()
+
+  while True:
+      print("\nOptions:")
+      print("1. Add Stock")
+      print("2. Remove Stock")
+      print("3. Display Portfolio")
+      print("4. Exit")
+      choice = input("Enter your choice (1/2/3/4): ")
+
+      if choice == "1":
+          symbol = input("Enter the stock symbol: ")
+          shares = int(input("Enter the number of shares: "))
+          tracker.add_stock(symbol, shares)
+          print(f"{shares} shares of {symbol} added to the portfolio.")
+      elif choice == "2":
+          symbol = input("Enter the stock symbol to remove: ")
+          tracker.remove_stock(symbol)
+          print(f"{symbol} removed from the portfolio.")
+      elif choice == "3":
+          tracker.display_portfolio()
+      elif choice == "4":
+          print("Exiting the program.")
+          break
+      else:
+          print("Invalid choice. Please try again.")
